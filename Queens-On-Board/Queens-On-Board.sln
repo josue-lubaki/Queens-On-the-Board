@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queens-On-Board", "Queens-On-Board.csproj", "{0B2E8C60-6671-47F3-BD1B-B91E4B16D31A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B2E8C60-6671-47F3-BD1B-B91E4B16D31A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B2E8C60-6671-47F3-BD1B-B91E4B16D31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B2E8C60-6671-47F3-BD1B-B91E4B16D31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B2E8C60-6671-47F3-BD1B-B91E4B16D31A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83833326-9AAA-47CA-90E8-CF0FEA83549E}
+	EndGlobalSection
+EndGlobal
