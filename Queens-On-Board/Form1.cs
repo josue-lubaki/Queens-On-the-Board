@@ -57,9 +57,8 @@ namespace Queens_On_Board
 
                 Console.WriteLine("\nVoici les Options disponibles :" +
                   "\n\t1. Initilialiser l'Échiquier" +
-                  "\n\t2. Générer une solution pour les reines sur l'échiquier" +
-                  "\n\t3. Affichier le nombre total de k-prometteurs produit pour la solution"+
-                   "\n\t4. Quitter\n");
+                  "\n\t2. Générer la liste des solutions pour les reines sur l'échiquier" +
+                   "\n\t3. Quitter\n");
                 Console.Write("Selectionner l'Option : ");
                 menu = Convert.ToInt32(Console.ReadLine());
 
@@ -74,19 +73,12 @@ namespace Queens_On_Board
 
                     case 2:
                         if (jeu.EchequierEstResolvable())
-                        {
                             jeu.printSolution();
-                            Console.WriteLine(" Le nombre de k-prometteur total pour la solution est : " + jeu.nombreK_prometteur);
-                        }
                         else
                             Console.WriteLine("Désolé, La Solution n'existe pas !");
                         break;
 
                     case 3:
-                        Console.WriteLine(" Le nombre de k-prometteur total pour la solution est : " + jeu.nombreK_prometteur);
-                        break;
-
-                    case 4:
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         flag = false;

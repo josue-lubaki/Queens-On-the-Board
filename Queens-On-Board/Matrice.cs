@@ -87,6 +87,64 @@ namespace Queens_On_Board
             Data[ligne, colonne] = value;
         }
 
+        /**
+         Transposée de la Matrice
+        */
+        /** Opération : Transposé d'une Matrice 
+         *  Condition : La Matrice doit être Carrée afin de trouver sa Transposée 
+         *  
+         *  @return Matrice */
+        public Matrice Transposee
+        {
+            get
+            {
+                try
+                {
+                    if (!EstCarree)
+                        throw new Exception("La Matrice n'est pas carrée : Impossible de Calculer la transposee | return 'null'");
+                    Matrice matrix = new Matrice(ColSize);
+                    for (int i = 0; i < RowSize; i++)
+                    {
+                        for (int j = 0; j < ColSize; j++)
+                        {
+                            if (i == j) // Pour ne pas modifier la Trace
+                            {
+                                matrix[i, j] = Data[i, j];
+                                break;
+                            }
+                            // Swap
+                            int tempo = Data[i, j];
+                            matrix[i, j] = Data[j, i];
+                            matrix[j, i] = tempo;
+                        }
+                    }
+                    return matrix;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error : " + e.Message);
+                    return null;
+                }
+            }
+        }
+
+        /**
+         */
+        /** Opération : Est Carree ? 
+         *  Cette fonction renvoi <<True>> si la Matrice est Carrée (2 par 2 || 3 par 3 ||...) 
+         *  Condition : Nombre de Colonne == Nombres de ligne 
+         *
+         *  @return bool */
+        public bool EstCarree
+        {
+            get
+            {
+                return (RowSize == ColSize) ? true : false;
+            }
+        }
+
+
+
 
 
         /**********************************************************************************************/
@@ -105,7 +163,7 @@ namespace Queens_On_Board
 
         public override string ToString()
         {
-            string output = "";
+            string output = "\n";
             for (int i = 0; i < RowSize; i++)
             {
                 for (int j = 0; j < ColSize; j++)
