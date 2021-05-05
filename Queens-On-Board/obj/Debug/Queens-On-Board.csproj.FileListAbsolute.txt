@@ -1,0 +1,10 @@
+E:\GitLab\Queens\Queens-On-Board\obj\Debug\Queens-On-Board.csprojAssemblyReference.cache
+E:\GitLab\Queens\Queens-On-Board\obj\Debug\Queens_On_Board.Properties.Resources.resources
+E:\GitLab\Queens\Queens-On-Board\obj\Debug\Queens-On-Board.csproj.GenerateResource.cache
+E:\GitLab\Queens\Queens-On-Board\obj\Debug\Queens-On-Board.csproj.CoreCompileInputs.cache
+E:\GitLab\Queens\Queens-On-Board\bin\Debug\Queens-On-Board.exe.config
+E:\GitLab\Queens\Queens-On-Board\bin\Debug\Queens-On-Board.exe
+E:\GitLab\Queens\Queens-On-Board\bin\Debug\Queens-On-Board.pdb
+E:\GitLab\Queens\Queens-On-Board\obj\Debug\Queens-On-Board.exe
+E:\GitLab\Queens\Queens-On-Board\obj\Debug\Queens-On-Board.pdb
+E:\GitLab\Queens\Queens-On-Board\obj\Debug\Queens_On_Board.Form1.resources
