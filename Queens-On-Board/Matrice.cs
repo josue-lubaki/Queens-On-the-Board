@@ -4,6 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/* Accueil.cs  ***********************************************************************************************
+ **********     @Authors :                                             Date : 05 Avril 2021       **********
+ **********                 * Josue Lubaki                                                        **********
+ **********                 * Ismael Gansonre                                                     **********
+ **********                 * Jordan Kuibia                                                       **********
+ **********                 * Jonathan Kanyinda                                                   **********
+ **********                 * Edgard Koffi                                                        **********
+ ***********************************************************************************************************/
+/*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ * Matrice.cs
+ * ========
+ *      la Structure de données Utilisée pour stocker les données
+ *      
+ *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*/
+
 namespace Queens_On_Board
 {
     class Matrice
@@ -94,11 +109,11 @@ namespace Queens_On_Board
             for (int i = 0; i < RowSize; i++)
             {
                 for (int j = 0; j < ColSize; j++)
-                {
-                    output += this[i, j];
-                }
+                    output += " " + (this[i, j]==1 ? " Q " : "---") + " ";
+                output += "\n\n";
             }
             return output;
+
         }
     }
 

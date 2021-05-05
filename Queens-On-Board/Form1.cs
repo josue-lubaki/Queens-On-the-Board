@@ -5,111 +5,103 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+/* Accueil.cs  ***********************************************************************************************
+ **********     @Authors :                                             Date : 05 Avril 2021       **********
+ **********                 * Josue Lubaki                                                        **********
+ **********                 * Ismael Gansonre                                                     **********
+ **********                 * Jordan Kuibia                                                       **********
+ **********                 * Jonathan Kanyinda                                                   **********
+ **********                 * Edgard Koffi                                                        **********
+ ***********************************************************************************************************/
 
 namespace Queens_On_Board
 {
     public partial class Form1 : Form
     {
+
+        private JeuEchec jeu;
+        private int tailleMatrice;
+        private Matrice matrice;
+
         public Form1()
         {
             InitializeComponent();
-            ResoudreEchequier(8);
         }
 
-        private static int nombreK_prometteur = 0;
-
-        /**
-        * Methode qui permet d'afficher toutes les cases de l'échiquier
-        * @return void
-        */
-        void AfficherSolution(Matrice board)
+        private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < board.ColSize; i++)
-            {
-                for (int j = 0; j < board.ColSize; j++)
-                    Console.Write(" " + board[i, j]
-                                      + " ");
-                Console.WriteLine();
-            }
+            Menus();
         }
 
         
-        /**
-         * Methode qui vérifie si la reine est en sécurité (hors de danger) sur la ligne, colonne et diagonale
-         * @return boolean
-         */
-        bool estEnSecurite(Matrice board, int row, int col)
+        void Menus()
         {
-            int i, j;
+            this.Hide();
+            bool flag = true;
+            int menu;
 
-            /* vérifier les colonnes pour une ligne fixe */
-            for (i = 0; i < col; i++)
-                if (board[row, i] == 1)
-                    return false;
-
-            /* Vérifier la diagonale gauche supérieur de l'échiquier */
-            for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-                if (board[i, j] == 1)
-                    return false;
-
-            /* Vérifier la diagonale gauche inférieure de l'échiquier */
-            for (i = row, j = col; j >= 0 && i < board.ColSize; i++, j--)
-                if (board[i, j] == 1)
-                    return false;
-
-            return true;
-        }
-
-        /* Methode qui résout le problèée de la reine d'une manière recursive */
-        bool ResolutionPartielle(Matrice board, int col)
-        {
-            /* Si toutes les reines sont placées, on retourne vrai */
-            if (col >= board.RowSize)
-                return true;
-
-            /* on essaye de placer une reine sur toutes les lignes une par une */
-            for (int i = 0; i < board.RowSize; i++)
+            while (flag)
             {
-               
-                //verifie si une reine peut etre placee dans la ligne i(++) d'une colonne (col) bien precise sans conflit 
-                if (estEnSecurite(board, i, col))
+
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine(
+                    "\n\n\t\t\t■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■" +
+                    "\n\t\t\t■ ■ ■ ■ ■ ■ ■ ■ ■ ■ MENU PRINCIPAL ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■" +
+                    "\n\t\t\t■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■");
+                Console.ResetColor();
+
+                Console.WriteLine("\nVoici les Options disponibles :" +
+                  "\n\t1. Initilialiser l'Échiquier" +
+                  "\n\t2. Générer une solution pour les reines sur l'échiquier" +
+                  "\n\t3. Affichier le nombre total de k-prometteurs produit pour la solution"+
+                   "\n\t4. Quitter\n");
+                Console.Write("Selectionner l'Option : ");
+                menu = Convert.ToInt32(Console.ReadLine());
+
+                switch (menu)
                 {
-                    //mettre la reine a la position  board[i,col] 
-                    board[i, col] = 1;
-                    nombreK_prometteur++;
+                    case 1:
+                        Console.WriteLine(" Entrer la taille de la Matrice");
+                        tailleMatrice = Convert.ToInt32(Console.ReadLine());
+                        matrice = new Matrice(tailleMatrice);
+                        jeu = new JeuEchec(matrice);
+                        break;
 
-                    //passer a la colone suivante et refaire l'operation pour inserer la reine  
-                    if (ResolutionPartielle(board, col + 1) == true)
-                        return true;
+                    case 2:
+                        if (jeu.EchequierEstResolvable())
+                        {
+                            jeu.printSolution();
+                            Console.WriteLine(" Le nombre de k-prometteur total pour la solution est : " + jeu.nombreK_prometteur);
+                        }
+                        else
+                            Console.WriteLine("Désolé, La Solution n'existe pas !");
+                        break;
 
-                    /* si placer une reine board[i,col]
-                    ne mene pas a une solution alors on enleve la reine du board[i,col] */
-                    board[i, col] = 0; // BACKTRACK
+                    case 3:
+                        Console.WriteLine(" Le nombre de k-prometteur total pour la solution est : " + jeu.nombreK_prometteur);
+                        break;
+
+                    case 4:
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        flag = false;
+                        Console.WriteLine("\n\t\t\tCopyright 2021 - Toute Reproduction Interdite\n\t\t\t\t\t\tMerci !");
+                        Console.ResetColor();
+                        Thread.Sleep(2000);
+                        Application.Exit();
+                        break;
+
+                    default:
+                        Console.WriteLine("Saisir quelque chose de correct please");
+                        break;
                 }
             }
 
-
-            //Si la reine ne peut  etre placée dans aucune ligne dans cette colone , on retourne faux
-           
-            return false;
-        }
-
-        
-        bool ResoudreEchequier(int N)
-        {
-            Matrice matrice = new Matrice(N);
-
-            if (ResolutionPartielle(matrice, 0) == false)
-            {
-                Console.Write("La Solution n'existe pas !");
-                return false;
-            }
-
-            AfficherSolution(matrice);
-            Console.Write("Voici le nombre de k-prometteurs produits avant : " + nombreK_prometteur);
-            return true;
         }
 
     }
